@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'elasticsearch安装在Linux及相关问题'
-subtitle: 'elasticsearch-7.3.2'
+title: 'Linux安装elasticsearch及相关安装问题'
+subtitle: 'elasticsearch-7.3.2安装'
 date: 2020-11-23
 categories: Elasticsearch
-tags: Elasticsearch
+tags: Elasticsearch elasticsearch
 ---
 
 Linux安装elasticsearch及相关问题 elasticsearch-7.3.2
@@ -13,19 +13,24 @@ Linux安装elasticsearch及相关问题 elasticsearch-7.3.2
 
 **elasticsearch安装:** 下载---解压---配置---启动
 
+> ```
 > wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.2.tar.gz
->
 > tar -zxvf elasticsearch-7.3.2.tar.gz
+> ```
 
 <img src="/assets/img/es/image-20201119105344208.png" alt="image-20201119105344208" style="zoom:67%;" />
 
-> sudo vi config/elasticsearch.yml
+> ```
+> vi config/elasticsearch.yml
+> ```
 
 <img src="/assets/img/es/image-20201119105407424.png" alt="image-20201119105407424" style="zoom:67%;" />
 
 elasticsearch默认安装后设置的内存是1GB,我这里只是自己的一个乞丐版本的服务器，内存比较小，我就只给他分配256M（根据自己情况使用配置，如果内存不够的话，启动过程中会提示已杀死这类提示）
 
+> ```
 > vi config/jvm.options
+> ```
 
 <img src="/assets/img/es/image-20201119105436699.png" alt="image-20201119105436699" style="zoom: 67%;" />
 
@@ -37,21 +42,25 @@ ps： 更多具体配置可以在[elasticsearch官网](https://links.jianshu.com
 
 所以我需要为elasticsearch新建一个系统运行账号
 
+> ```
 > groupadd elasticsearch   //新建一个elasticsearch的用户组
->
 > useradd -g elasticsearch elasticsearch //在elasticsearch用户组下面建立一个elasticsearch的用户
+> ```
 
 将elasticsearch目录的所有者给刚刚建立的账号
 
+> ```
 > chown -R elasticsearch:elasticsearch elasticsearch-7.3.2/
+> ```
 
 <img src="/assets/img/es/image-20201119105616446.png" alt="image-20201119105616446" style="zoom:67%;" />
 
 然后切换到刚刚的账号启动elasticsearch
 
+> ```
 > su elasticsearch
->
 > ./elasticsearch-7.3.2/bin/elasticsearch
+> ```
 
 启动过程中可能会出现下面这类的错误提示
 
@@ -63,13 +72,17 @@ ps： 更多具体配置可以在[elasticsearch官网](https://links.jianshu.com
 
 \1. 查看用户最大打开线程数
 
+> ```
 > ulimit -a
+> ```
 
 <img src="/assets/img/es/image-20201119105714807.png" alt="image-20201119105714807" style="zoom:67%;" />
 
 \2. 切换到root用户，编辑文件
 
+> ```
 > vi /etc/security/limits.conf
+> ```
 
 在文件末尾加上下面配置
 
@@ -87,7 +100,9 @@ ps： 更多具体配置可以在[elasticsearch官网](https://links.jianshu.com
 
 在root账号下修改配置文件
 
+> ```
 > vi /etc/sysctl.conf
+> ```
 
 在末尾添加配置，值大于等于实体的262144就可以
 
@@ -95,7 +110,9 @@ ps： 更多具体配置可以在[elasticsearch官网](https://links.jianshu.com
 
 添加完成后执行下面命令
 
+> ```
 > sysctl -p
+> ```
 
 然后可以查看到成功修改成你设置的数字
 
@@ -185,5 +202,7 @@ chown -R es:es /usr/local/elasticsearch/
 
 
 文档出处
-链接：https://www.jianshu.com/p/1d2ddb92f6fb
-链接：https://www.cnblogs.com/zhi-leaf/p/8484337.html
+
+[链接]: https://www.jianshu.com/p/1d2ddb92f6fb
+[链接]: https://www.cnblogs.com/zhi-leaf/p/8484337.html
+

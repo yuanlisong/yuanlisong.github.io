@@ -4,7 +4,7 @@ title: 'Linux安装elasticsearch及相关安装问题'
 subtitle: 'elasticsearch-7.3.2安装'
 date: 2020-11-23
 categories: Elasticsearch
-tags: Elasticsearch elasticsearch
+tags: Elasticsearch
 ---
 
 Linux安装elasticsearch及相关问题 elasticsearch-7.3.2

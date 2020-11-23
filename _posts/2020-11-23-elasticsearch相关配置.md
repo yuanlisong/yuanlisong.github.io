@@ -4,7 +4,7 @@ title: 'elasticsearch在PostMan相关命令'
 subtitle: 'elasticsearch在PostMan相关命令'
 date: 2020-11-23
 categories: Elasticsearch
-tags: Elasticsearch elasticsearch
+tags: Elasticsearch
 ---
 
 1. 创建index

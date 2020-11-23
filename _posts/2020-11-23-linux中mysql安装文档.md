@@ -4,7 +4,7 @@ title: 'Linux(Centos 7)环境下安装Mysql'
 subtitle: 'Linux(Centos 7)环境下安装Mysql'
 date: 2020-11-23
 categories: Mysql
-tags: Mysql mysql
+tags: Mysql
 ---
 
 Linux(Centos 7)环境下安装Mysql

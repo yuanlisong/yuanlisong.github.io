@@ -10,22 +10,33 @@ tags: Elasticsearch
 1. 创建index
 
    ```
-   PUT   192.168.1.33:9200/wechat_message?pretty
+   PUT   localhost:9200/wechat_message?pretty
    成功返回：{"acknowledged":true}
    ```
 
 2. 查看index
 
    ```
-   GET   192.168.1.33:9200/wechat_message/_settings
+   GET   localhost:9200/wechat_message/_settings
    ```
 
 3. 修改index中max_result_window默认阈值
 
    ```
-   PUT   192.168.1.33:9200/wechat_message/_settings
+   PUT   localhost:9200/wechat_message/_settings
    body-raw-json    {"index":{"max_result_window":100000000}}
    ```
+   
+4. 根据id删除数据
 
+   ```
+   delete   localhost:9200/wechat_message/_doc/1
+   ```
+
+5. 
+
+   ```
+   
+   ```
 
 
